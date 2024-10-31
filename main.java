@@ -5,11 +5,14 @@ public class Main {
     static int[] MemoryArray = new int[] {0,0,0,0, 0,0,0,0};
     static int PI = 0; // Pointers Index
     
+    static int ASKII_MEM = 0;
+    
     public static void SRToutput() {
       System.out.print("  ");
       for (int i=0; i<MemoryArray.length; i++) {
         System.out.print("["+MemoryArray[i]+"]");
       }
+      System.out.print(":>: "+ASKII_MEM);
       System.out.print("\n"+("   ").repeat(PI+1)+"^");
     }
 
@@ -33,7 +36,9 @@ public class Main {
         } else if (Command == '-') {
           MemoryArray[PI] = Math.max(MemoryArray[PI]-1, 0);
         } else if (Command == '+') {
-          MemoryArray[PI] ++;
+          MemoryArray[PI] = Math.min(MemoryArray[PI]+1, 9);
+        } else if (Command == ',') {
+          ASKII_MEM = (48+MemoryArray[PI]);
         }
       }
     }
