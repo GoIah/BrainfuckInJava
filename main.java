@@ -10,14 +10,38 @@ public class Main {
       for (int i=0; i<MemoryArray.length; i++) {
         System.out.print("["+MemoryArray[i]+"]");
       }
-      System.out.print("\n"+("   ").repeat((PI)+1)+"^");
+      System.out.print("\n"+("   ").repeat(PI+1)+"^");
+    }
+
+    public static String input() {
+    	Scanner input = new Scanner(System.in);
+      System.out.print("\n: ");
+      
+      return input.next();
+    }
+
+    public static void run() {
+      String a = input();
+
+      for (int i=0; i<a.length(); i++) {
+        char Command = a.charAt(i);
+        
+        if (Command == '>') {
+          PI = Math.min(PI+1, MemoryArray.length-1);
+        } else if (Command == '<') {
+          PI = Math.max(PI-1, 0);
+        } else if (Command == '-') {
+          MemoryArray[PI] = Math.max(MemoryArray[PI]-1, 0);
+        } else if (Command == '+') {
+          MemoryArray[PI] ++;
+        }
+      }
     }
       
     public static void main(String[] args) {
-      SRToutput();
-      
-    	Scanner input = new Scanner(System.in);
-      System.out.print("\n   Input: ");
-    	input.next();
+      while (true) {
+        SRToutput();
+        run();
+    }
   }
 }
